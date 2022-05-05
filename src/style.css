@@ -1,0 +1,84 @@
+h1,
+h5 {
+  color: crimson;
+  font-family: "Pacifico", cursive;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+  margin: auto;
+}
+h5 {
+  text-align: left;
+}
+button {
+  width: 60px;
+}
+
+img {
+  padding: 20px;
+  border-radius: 30px;
+  max-width: 350px;
+}
+
+.sign-off {
+  opacity: 50%;
+  font-size: 12px;
+  margin: 0px auto;
+  max-width: 150px;
+}
+
+.container {
+  padding: 25px;
+}
+
+.app-boxes {
+  border: 1px solid rgb(168, 168, 168);
+  padding: 20px;
+  margin: 0px auto;
+  max-width: 500px;
+  border-radius: 5px;
+}
+
+.centred,
+.row {
+  text-align: center;
+}
+
+#searchbox {
+  width: 250px;
+}
+
+#pick-me-button,
+#my-location-button {
+  width: 120px;
+  color: white;
+}
+
+.tempNumber {
+  font-size: 36px;
+}
+
+.tempTypeF .tempTypeC {
+  font-size: 10px;
+}
+
+.fa-sun {
+  color: orange;
+}
+
+.fa-cloud-showers-heavy {
+  color: navy;
+}
+
+.fa-cloud {
+  color: grey;
+}
+
+.col:hover {
+  cursor: pointer;
+  background-color: rgb(240, 247, 255);
+  transition-duration: 0.5s;
+  border-radius: 10px;
+}
