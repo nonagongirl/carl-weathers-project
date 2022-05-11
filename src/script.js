@@ -1,42 +1,46 @@
 //current date and time
-let now = new Date();
+function currentDateTime() {
+  let now = new Date();
 
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[now.getDay()];
 
-let months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "June",
-  "July",
-  "Aug",
-  "Sept",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-let month = months[now.getMonth()];
-let hours = now.getHours();
-let minutes = now.getMinutes();
-let date = now.getDate();
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let month = months[now.getMonth()];
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  let date = now.getDate();
 
-hours = hours < 10 ? "0" + hours : hours;
-minutes = minutes < 10 ? "0" + minutes : minutes;
+  hours = hours < 10 ? "0" + hours : hours;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
 
-let dateNow = document.querySelector(".current");
-dateNow.innerHTML = `At your current location it's ${hours}:${minutes} on ${day} ${date} ${month}`;
-console.log(dateNow);
+  let dateNow = document.querySelector(".weather-result");
+  dateNow.innerHTML = `${day} ${date} ${month} at ${hours}:${minutes}`;
+  console.log(dateNow);
+}
+currentDateTime();
+//work out how to get the time to change after the search result appears
 
 //for making use my location button work
 function myPosition(position) {
@@ -56,6 +60,7 @@ function searchCity(event) {
   let apiKey = "9b385bf584a6637913273ac2cfe59646";
   let apiUrlTwo = `https://api.openweathermap.org/data/2.5/weather?q=${searchResult.value}&appid=${apiKey}&units=metric`;
   axios.get(apiUrlTwo).then(weatherResult);
+  console.log(apiUrlTwo);
 }
 
 //for updating weather results in site body
