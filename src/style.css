@@ -18,8 +18,14 @@ button {
 
 img {
   padding: 0px;
-  border-radius: 40px;
+  border-radius: 35px;
   max-width: 200px;
+}
+
+img:hover {
+  background-color: rgb(240, 247, 255);
+  transition-duration: 0.3s;
+  padding: 5px;
 }
 
 .sign-off {
