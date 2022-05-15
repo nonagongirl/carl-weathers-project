@@ -37,10 +37,10 @@ function currentDateTime() {
 
   let dateNow = document.querySelector(".weather-result");
   dateNow.innerHTML = `${day} ${date} ${month} at ${hours}:${minutes}`;
-  console.log(dateNow);
 }
 currentDateTime();
 //work out how to get the time to change after the search result appears
+//(not taught in SheCodes Plus so will need to google)
 
 //for making use my location button work
 function myPosition(position) {
@@ -67,7 +67,7 @@ function searchCity(event) {
 //for updating weather results in site body
 function weatherResult(response) {
   let tempC = Math.round(response.data.main.temp);
-  let weatherDescription = response.data.weather[0].main;
+  let weatherDescription = response.data.weather[0].description;
   let city = response.data.name;
   let searchedCity = document.querySelector(".searchedCity");
   searchedCity.innerHTML = city;
@@ -75,6 +75,11 @@ function weatherResult(response) {
   localTempNum.innerHTML = `${tempC}°C`;
   let localTempWords = document.querySelector(".weather-desc");
   localTempWords.innerHTML = weatherDescription;
+  let weatherEmoji = document.querySelector("#weatherEmoji");
+  weatherEmoji.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 let showCity = document.querySelector(".searching");

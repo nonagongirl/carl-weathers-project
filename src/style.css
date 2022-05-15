@@ -16,7 +16,7 @@ button {
   width: 60px;
 }
 
-img {
+.carlPic {
   padding: 0px;
   border-radius: 35px;
   max-width: 200px;
@@ -25,9 +25,17 @@ img {
 img:hover {
   background-color: rgb(240, 247, 255);
   transition-duration: 0.3s;
-  padding: 5px;
+  padding: 3px;
+  cursor: pointer;
 }
 
+.weather-desc:first-letter {
+  text-transform: capitalize;
+}
+
+#weatherEmoji {
+  width: 40px;
+}
 .sign-off {
   opacity: 50%;
   font-size: 12px;
