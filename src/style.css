@@ -25,7 +25,7 @@ button {
 img:hover {
   background-color: rgb(240, 247, 255);
   transition-duration: 0.3s;
-  padding: 3px;
+  padding: 2px;
   cursor: pointer;
 }
 
@@ -33,9 +33,6 @@ img:hover {
   text-transform: capitalize;
 }
 
-#weatherEmoji {
-  width: 40px;
-}
 .sign-off {
   opacity: 50%;
   font-size: 12px;
@@ -61,6 +58,10 @@ img:hover {
   text-align: center;
 }
 
+.lastUpdated {
+  opacity: 90%;
+  font-size: small;
+}
 #searchbox {
   width: 250px;
 }

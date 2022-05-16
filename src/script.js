@@ -1,7 +1,5 @@
-//current date and time
-function currentDateTime() {
-  let now = new Date();
-
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let days = [
     "Sunday",
     "Monday",
@@ -11,7 +9,7 @@ function currentDateTime() {
     "Friday",
     "Saturday",
   ];
-  let day = days[now.getDay()];
+  let day = days[date.getDay()];
 
   let months = [
     "Jan",
@@ -27,20 +25,25 @@ function currentDateTime() {
     "Nov",
     "Dec",
   ];
-  let month = months[now.getMonth()];
-  let hours = now.getHours();
-  let minutes = now.getMinutes();
-  let date = now.getDate();
-
-  hours = hours < 10 ? "0" + hours : hours;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-
-  let dateNow = document.querySelector(".weather-result");
-  dateNow.innerHTML = `${day} ${date} ${month} at ${hours}:${minutes}`;
+  let dateNum = date.getDate();
+  let month = months[date.getMonth()];
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${day} ${dateNum} ${month} at ${hours}:${minutes}`;
 }
-currentDateTime();
-//work out how to get the time to change after the search result appears
-//(not taught in SheCodes Plus so will need to google)
+
+//gives homepage some content pre-search
+function search(city) {
+  let apiKey = "9b385bf584a6637913273ac2cfe59646";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(weatherResult);
+}
 
 //for making use my location button work
 function myPosition(position) {
@@ -66,7 +69,7 @@ function searchCity(event) {
 
 //for updating weather results in site body
 function weatherResult(response) {
-  let tempC = Math.round(response.data.main.temp);
+  tempC = Math.round(response.data.main.temp);
   let weatherDescription = response.data.weather[0].description;
   let city = response.data.name;
   let searchedCity = document.querySelector(".searchedCity");
@@ -80,10 +83,11 @@ function weatherResult(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  let windSpeed = document.querySelector("#wind");
+  windSpeed.innerHTML = Math.round(response.data.wind.speed);
+  let dateElement = document.querySelector(".dateResult");
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
-
-let showCity = document.querySelector(".searching");
-showCity.addEventListener("submit", searchCity);
 
 function getPosition(event) {
   event.preventDefault();
@@ -91,6 +95,24 @@ function getPosition(event) {
   searchResult.value = "";
   navigator.geolocation.getCurrentPosition(myPosition);
 }
+
+//changes temp to F
+function changeTempTypeF(event) {
+  event.preventDefault();
+  let tempF = Math.round(tempC * (9 / 5) + 32);
+  let tempTypeChange = document.querySelector(".tempNumber");
+  tempTypeChange.innerHTML = `${tempF}°F`;
+}
+
+//changes temp to C
+function changeTempTypeC(event) {
+  event.preventDefault();
+  let tempTypeChange = document.querySelector(".tempNumber");
+  tempTypeChange.innerHTML = `${tempC}°C`;
+}
+
+let tempC = null;
+
 // to make the myPosition function work when I press use my location
 let locationButton = document.getElementById("my-location-button");
 locationButton.addEventListener("click", getPosition);
@@ -99,64 +121,13 @@ locationButton.addEventListener("click", getPosition);
 let searchButton = document.getElementById("go-Button");
 searchButton.addEventListener("click", searchCity);
 
-//for updating searched weather to fahrenheit - needs improving and doesnt work with local position
-function moveToF(event) {
-  event.preventDefault();
-  let searchResult = document.querySelector("#searchbox");
-  let cityResult = document.querySelector(".searchedCity");
-  cityResult.innerHTML = `${searchResult.value}`;
-  let apiKey = "9b385bf584a6637913273ac2cfe59646";
-  let units = "imperial";
-  let apiUrlThree = `https://api.openweathermap.org/data/2.5/weather?q=${searchResult.value}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrlThree).then(weatherResult);
-}
+let showCity = document.querySelector(".searching");
+showCity.addEventListener("submit", searchCity);
 
 let ctof = document.querySelector(".tempTypeF");
-ctof.addEventListener("click", moveToF);
-//converting back to Celcius
+ctof.addEventListener("click", changeTempTypeF);
+//converting back to celsius
 let ftoc = document.querySelector(".tempTypeC");
-ftoc.addEventListener("click", searchCity);
+ftoc.addEventListener("click", changeTempTypeC);
 
-let tempC = "17";
-let tempF = Math.round(tempC * (9 / 5) + 32);
-
-//changes temp to F
-function changeTempTypeF(event) {
-  event.preventDefault();
-  let tempTypeChange = document.querySelector(".tempNumber");
-  tempTypeChange.innerHTML = `${tempF}°F ☀`;
-}
-
-//changes temp to C
-function changeTempTypeC(event) {
-  event.preventDefault();
-  let tempTypeChange = document.querySelector(".tempNumber");
-  tempTypeChange.innerHTML = `${tempC}°C ☀`;
-}
-
-// function findWeather() {
-//   let city = prompt("Enter a city");
-//   city = city.toLowerCase();
-//   if (weather[city] !== undefined) {
-//     let tempC = Math.round(weather[city].temp);
-//     let tempF = Math.round(weather[city].temp * (9 / 5) + 32);
-//     let humidity = weather[city].humidity;
-
-//     alert(
-//       `It is currently ${tempC}°C (${tempF}°F) in ${city} with a humidity of ${humidity}%.`
-//     );
-//   } else {
-//     alert(
-//       `Sorry, we don't know the weather for this city. Try going to www.google.com/search?q=weather+${city}.`
-//     );
-//   }
-// }
-
-//change emojis in weather result (not working as of 4 May)
-// if (tempC < 10) {
-//   let emojiChange = document.querySelector(".emoji");
-//   emojiChange.innerHTML = `❄`;
-// } else {
-//   let emojiChange = document.querySelector(".emoji");
-//   emojiChange.innerHTML = `🌞`;
-// }
+search("london");
