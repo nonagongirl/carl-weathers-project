@@ -22,13 +22,24 @@ button {
   max-width: 200px;
 }
 
-img:hover {
+.carlPic:hover {
   background-color: rgb(240, 247, 255);
   transition-duration: 0.3s;
   padding: 2px;
   cursor: pointer;
 }
 
+#weatherEmoji {
+  display: inline;
+  margin: 0 auto;
+  border-radius: 8px;
+  width: 90px;
+}
+
+#weatherEmoji:hover {
+  background-color: rgb(240, 247, 255);
+  border-radius: 8px;
+}
 .weather-desc:first-letter {
   text-transform: capitalize;
 }
@@ -74,6 +85,9 @@ img:hover {
 
 .tempNumber {
   font-size: 36px;
+  margin: auto;
+  text-align: center;
+  width: 50%;
 }
 
 .tempTypeF .tempTypeC {
