@@ -16,24 +16,22 @@ button {
   width: 60px;
 }
 
-.carlPic {
-  padding: 0px;
-  border-radius: 35px;
-  max-width: 200px;
+.tempNumber {
+  font-size: 36px;
+  margin: auto 0;
+  text-align: center;
+  width: 50%;
 }
 
-.carlPic:hover {
-  background-color: rgb(240, 247, 255);
-  transition-duration: 0.3s;
-  padding: 2px;
-  cursor: pointer;
+.tempLinks {
+  margin: auto 0;
+  font-size: 14px;
 }
 
 #weatherEmoji {
-  display: inline;
-  margin: 0 auto;
+  margin: auto 0;
   border-radius: 8px;
-  width: 90px;
+  width: 60px;
 }
 
 #weatherEmoji:hover {
@@ -42,6 +40,20 @@ button {
 }
 .weather-desc:first-letter {
   text-transform: capitalize;
+}
+
+.carlPic {
+  padding: 0px;
+  border-radius: 35px;
+  max-height: 180px;
+  max-width: 200px;
+}
+
+.carlPic:hover {
+  background-color: rgb(240, 247, 255);
+  transition-duration: 0.3s;
+  padding: 2px;
+  cursor: pointer;
 }
 
 .sign-off {
@@ -81,17 +93,6 @@ button {
 #my-location-button {
   width: 120px;
   color: white;
-}
-
-.tempNumber {
-  font-size: 36px;
-  margin: auto;
-  text-align: center;
-  width: 50%;
-}
-
-.tempTypeF .tempTypeC {
-  font-size: 10px;
 }
 
 .fa-sun {

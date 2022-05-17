@@ -78,15 +78,28 @@ function weatherResult(response) {
   localTempNum.innerHTML = `${tempC}°C`;
   let localTempWords = document.querySelector(".weather-desc");
   localTempWords.innerHTML = weatherDescription;
+  let weatherIcon = response.data.weather[0].icon;
   let weatherEmoji = document.querySelector("#weatherEmoji");
   weatherEmoji.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
   );
   let windSpeed = document.querySelector("#wind");
   windSpeed.innerHTML = Math.round(response.data.wind.speed);
   let dateElement = document.querySelector(".dateResult");
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+
+  let carlPic = document.querySelector(".carlPic");
+  if (tempC < 0) {
+    carlPic.setAttribute("src", "media/carlmiffed.jpg");
+  } else if (tempC < 10) {
+    carlPic.setAttribute("src", "media/carlsmile.jpg");
+  } else if (tempC < 20) {
+    carlPic.setAttribute("src", "media/carlhappy.jpg");
+  } else {
+    carlPic.setAttribute("src", "media/carlhot.jpg");
+  }
+  // NEED TO FIND A WIDER CARL IMAGE SELECTION
 }
 
 function getPosition(event) {
