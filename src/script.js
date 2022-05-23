@@ -67,6 +67,33 @@ function searchCity(event) {
   axios.get(apiUrlTwo).then(weatherResult);
 }
 
+//to display info for forecast
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecastElement = document.querySelector("#weather-forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tues", "Weds", "Thurs", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col">
+              <div class="weather-forecast-date">${day}</div>
+              <img src="http://openweathermap.org/img/wn/13d@2x.png" width="35">
+              <div class="weather-forecast-temperature"> <span class = "weather-forecast-min">12°C</span>/<span class = "weather-forecast-min">19°C</span></div>
+            `;
+    forecastHTML = forecastHTML + `</div>`;
+    forecastElement.innerHTML = forecastHTML;
+  });
+}
+
+//to gather info for forecast
+function getForecast(coordinates) {
+  let apiKey = "9b385bf584a6637913273ac2cfe59646";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 //for updating weather results in site body
 function weatherResult(response) {
   tempC = Math.round(response.data.main.temp);
@@ -100,6 +127,7 @@ function weatherResult(response) {
     carlPic.setAttribute("src", "media/carlhot.jpg");
   }
   // NEED TO FIND A WIDER CARL IMAGE SELECTION
+  getForecast(response.data.coord);
 }
 
 function getPosition(event) {
@@ -144,22 +172,3 @@ let ftoc = document.querySelector(".tempTypeC");
 ftoc.addEventListener("click", changeTempTypeC);
 
 search("london");
-
-function displayForecast() {
-  let forecastElement = document.querySelector("#weather-forecast");
-  let forecastHTML = `<div class="row">`;
-  let days = ["Sun", "Mon", "Tues", "Weds", "Thurs", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col">
-              <div class="weather-forecast-date">${day}</div>
-              <img src="http://openweathermap.org/img/wn/13d@2x.png" width="35">
-              <div class="weather-forecast-temperature"> <span class = "weather-forecast-min">12°C</span>/<span class = "weather-forecast-min">19°C</span></div>
-            `;
-    forecastHTML = forecastHTML + `</div>`;
-    forecastElement.innerHTML = forecastHTML;
-  });
-}
-
-displayForecast();
