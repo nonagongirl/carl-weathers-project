@@ -144,3 +144,22 @@ let ftoc = document.querySelector(".tempTypeC");
 ftoc.addEventListener("click", changeTempTypeC);
 
 search("london");
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tues", "Weds", "Thurs", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col">
+              <div class="weather-forecast-date">${day}</div>
+              <img src="http://openweathermap.org/img/wn/13d@2x.png" width="35">
+              <div class="weather-forecast-temperature"> <span class = "weather-forecast-min">12°C</span>/<span class = "weather-forecast-min">19°C</span></div>
+            `;
+    forecastHTML = forecastHTML + `</div>`;
+    forecastElement.innerHTML = forecastHTML;
+  });
+}
+
+displayForecast();
