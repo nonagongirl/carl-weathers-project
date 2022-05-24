@@ -38,6 +38,15 @@ function formatDate(timestamp) {
   return `${day} ${dateNum} ${month} at ${hours}:${minutes}`;
 }
 
+//to display day names in Forecast
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tues", "Weds", "Thurs", "Fri", "Sat"];
+
+  return days[day];
+}
+
 //gives homepage some content pre-search
 function search(city) {
   let apiKey = "9b385bf584a6637913273ac2cfe59646";
@@ -69,21 +78,31 @@ function searchCity(event) {
 
 //to display info for forecast
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Sun", "Mon", "Tues", "Weds", "Thurs", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col">
-              <div class="weather-forecast-date">${day}</div>
-              <img src="http://openweathermap.org/img/wn/13d@2x.png" width="35">
-              <div class="weather-forecast-temperature"> <span class = "weather-forecast-min">12°C</span>/<span class = "weather-forecast-min">19°C</span></div>
-            `;
-    forecastHTML = forecastHTML + `</div>`;
-    forecastElement.innerHTML = forecastHTML;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col">
+              <div class="weather-forecast-date">${formatForecastDay(
+                forecastDay.dt
+              )}</div>
+              <img src="http://openweathermap.org/img/wn/${
+                forecastDay.weather[0].icon
+              }.png" width="35">
+              <div class="weather-forecast-temperature"> <span class = "weather-forecast-min">${Math.round(
+                forecastDay.temp.min
+              )}°C</span>/<span class = "weather-forecast-max">${Math.round(
+          forecastDay.temp.max
+        )}°C</span></div></div>
+              `;
+    }
   });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 //to gather info for forecast
