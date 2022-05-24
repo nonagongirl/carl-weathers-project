@@ -132,9 +132,11 @@ function weatherResult(response) {
   );
   let windSpeed = document.querySelector("#wind");
   windSpeed.innerHTML = Math.round(response.data.wind.speed);
-  let dateElement = document.querySelector(".dateResult");
+
+  let dateElement = document.querySelector("#date-result");
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
 
+  // to change the Carl photo depending on temperature
   let carlPic = document.querySelector(".carlPic");
   if (tempC < 0) {
     carlPic.setAttribute("src", "media/carlmiffed.jpg");
@@ -156,21 +158,6 @@ function getPosition(event) {
   navigator.geolocation.getCurrentPosition(myPosition);
 }
 
-//changes temp to F
-function changeTempTypeF(event) {
-  event.preventDefault();
-  let tempF = Math.round(tempC * (9 / 5) + 32);
-  let tempTypeChange = document.querySelector(".tempNumber");
-  tempTypeChange.innerHTML = `${tempF}°F`;
-}
-
-//changes temp to C
-function changeTempTypeC(event) {
-  event.preventDefault();
-  let tempTypeChange = document.querySelector(".tempNumber");
-  tempTypeChange.innerHTML = `${tempC}°C`;
-}
-
 let tempC = null;
 
 // to make the myPosition function work when I press use my location
@@ -183,11 +170,5 @@ searchButton.addEventListener("click", searchCity);
 
 let showCity = document.querySelector(".searching");
 showCity.addEventListener("submit", searchCity);
-
-let ctof = document.querySelector(".tempTypeF");
-ctof.addEventListener("click", changeTempTypeF);
-//converting back to celsius
-let ftoc = document.querySelector(".tempTypeC");
-ftoc.addEventListener("click", changeTempTypeC);
 
 search("london");
