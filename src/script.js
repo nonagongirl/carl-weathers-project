@@ -93,10 +93,10 @@ function displayForecast(response) {
               <img src="http://openweathermap.org/img/wn/${
                 forecastDay.weather[0].icon
               }.png" width="35">
-              <div class="weather-forecast-temperature"> <span class = "weather-forecast-min">${Math.round(
-                forecastDay.temp.min
-              )}°C</span>/<span class = "weather-forecast-max">${Math.round(
-          forecastDay.temp.max
+              <div class="weather-forecast-temperature"> <span class = "weather-forecast-max">${Math.round(
+                forecastDay.temp.max
+              )}°C</span> / <span class = "weather-forecast-min">${Math.round(
+          forecastDay.temp.min
         )}°C</span></div></div>
               `;
     }
