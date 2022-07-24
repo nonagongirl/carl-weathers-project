@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Whatever the Carl Weathers</title>
-    <link href="src/style.css" rel="stylesheet" type="text/css" />
+    <title>Whatever the Carl Weathers - your Carl-based weather forecast app</title>
+    <link href="/src/style.css" rel="stylesheet" type="text/css" />
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -22,7 +22,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
-    <div class="mx-auto" style="width: 900px">
+    <div class="mx-auto d-flex siteWidth" style="width: 75%">
       <div class="container">
         <h1>Whatever the Carl Weathers</h1>
         <div class="app-boxes">
@@ -67,19 +67,18 @@
                       <div class="d-flex justify-content-center"><span class="tempNumber"></span><span class="tempUnit"></span>
                        <img id = weatherEmoji src="" width="42">
                        
-             </div><br>
+             </div>
                <div class = lastUpdated>Last updated: <span id="date-result">
               </span></div>
               </div>
             
-                    <div class="col-sm-6 ">   <img src="#" class="mx-auto d-block carlPic"/>
+                    <div class="col-sm-6 ">   <img src="#" class="mx-auto d-block carlPic img-fluid"/>
           </div></div>
         </div>
         <br />
         <div class="app-boxes forecast">
-      
-          <h5>Forecast: the next 6 days</h5>
-          <div class="row">
+                <h5>Forecast: the next 6 days</h5>
+          <div class="row d-flex justify-content-center">
           <div class = "weather-forecast" id="weather-forecast">
            </div>
            
@@ -88,11 +87,11 @@
       </div>
     </div>
     <div class="sign-off">
-      <a href = https://github.com/nonagongirl/carl-weathers-project>Open-source code</a> by <a href=http://www.instagram.com/stephaniejay_uk>Stef Braithwaite</div>
+      <a href = https://github.com/nonagongirl/carl-weathers-project>Open-source code </a> by <a href=http://www.instagram.com/stephaniejay_uk> Stef Braithwaite</div>
   </body>
   <script
     src="https://kit.fontawesome.com/5e23a9632b.js"
     crossorigin="anonymous"
   ></script>
-  <script src="src/script.js"></script>
+  <script src="/src/script.js"></script>
 </html>

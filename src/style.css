@@ -1,11 +1,20 @@
+:root {
+  --background-color: rgb(240, 247, 255);
+  --header-color: crimson;
+  --text-shadow: 0px 0px 6px rgba(221, 226, 255, 0.7);
+}
+
 body {
   background-image: url(../media/appbackground.jpg);
-  background-position: center;
+  background-position: center center;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-top: 30px;
 }
 h1,
 h5 {
-  color: crimson;
+  color: var(--header-color);
   font-family: "Pacifico", cursive;
 }
 
@@ -13,7 +22,7 @@ h1 {
   text-align: center;
   padding: 20px;
   margin: auto;
-  text-shadow: 0px 0px 6px rgba(221, 226, 255, 0.7);
+  text-shadow: var(--text-shadow);
 }
 h5 {
   text-align: left;
@@ -41,7 +50,7 @@ button {
 }
 
 #weatherEmoji:hover {
-  background-color: rgb(240, 247, 255);
+  background-color: var(--background-color);
   border-radius: 8px;
 }
 .weather-desc:first-letter {
@@ -53,8 +62,10 @@ button {
   font-size: 12px;
   margin: 0px auto;
   max-width: 300px;
-
   color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 a:link,
@@ -86,7 +97,7 @@ a:visited {
   font-size: 12px;
 }
 #searchbox {
-  width: 250px;
+  width: 80%;
 }
 
 #carl-button,
@@ -105,7 +116,7 @@ a:visited {
 
 .col:hover {
   cursor: pointer;
-  background-color: rgb(240, 247, 255);
+  background-color: var(--background-color);
   transition-duration: 0.5s;
   border-radius: 10px;
 }
@@ -118,8 +129,42 @@ a:visited {
 }
 
 .carlPic:hover {
-  background-color: rgb(240, 247, 255);
+  background-color: var(--background-color);
   transition-duration: 0.3s;
   padding: 0px;
   cursor: pointer;
+}
+
+@media (max-width: 580px) {
+  #searchbox {
+    width: 75%;
+  }
+  #go-Button {
+    width: 20%;
+  }
+  #carl-button,
+  #my-location-button {
+    width: 45%;
+    color: white;
+    font-size: 75%;
+  }
+
+  h5 {
+    font-size: smaller;
+    text-align: center;
+  }
+
+  .container {
+    padding: 0%;
+  }
+
+  #carlPic {
+    display: flex;
+    width: 75%;
+  }
+
+  .siteWidth {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
 }

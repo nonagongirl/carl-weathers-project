@@ -139,27 +139,27 @@ function weatherResult(response) {
   // to change the Carl photo depending on temperature
   let carlPic = document.querySelector(".carlPic");
   if (tempC < 0) {
-    carlPic.setAttribute("src", "media/carlshocked.gif");
+    carlPic.setAttribute("src", "/media/carlshocked.gif");
   } else if (tempC < 5) {
-    carlPic.setAttribute("src", "media/carlcold.jpg");
+    carlPic.setAttribute("src", "/media/carlcold.jpg");
   } else if (tempC < 10) {
-    carlPic.setAttribute("src", "media/carlmiffed.jpg");
+    carlPic.setAttribute("src", "/media/carlmiffed.jpg");
   } else if (tempC < 13) {
-    carlPic.setAttribute("src", "media/carlsmile.jpg");
+    carlPic.setAttribute("src", "/media/carlsmile.jpg");
   } else if (tempC < 18) {
-    carlPic.setAttribute("src", "media/carlhappy1.jpg");
+    carlPic.setAttribute("src", "/media/carlhappy1.jpg");
   } else if (tempC < 21) {
-    carlPic.setAttribute("src", "media/carlsmilegif.gif");
+    carlPic.setAttribute("src", "/media/carlsmilegif.gif");
   } else if (tempC < 23) {
-    carlPic.setAttribute("src", "media/carlhappy2.jpg");
+    carlPic.setAttribute("src", "/media/carlhappy2.jpg");
   } else if (tempC < 26) {
-    carlPic.setAttribute("src", "media/carlhotbeach.jpg");
+    carlPic.setAttribute("src", "/media/carlhotbeach.jpg");
   } else if (tempC < 29) {
-    carlPic.setAttribute("src", "media/rockybeachhuggif.gif");
+    carlPic.setAttribute("src", "/media/rockybeachhuggif.gif");
   } else {
-    carlPic.setAttribute("src", "media/carlbbq.gif");
+    carlPic.setAttribute("src", "/media/carlbbq.gif");
   }
-  // NEED TO FIND A WIDER CARL IMAGE SELECTION
+
   getForecast(response.data.coord);
 }
 
