@@ -136,6 +136,9 @@ a:visited {
 }
 
 @media (max-width: 580px) {
+  body {
+    padding-top: 10px;
+  }
   #searchbox {
     width: 75%;
   }
@@ -144,7 +147,7 @@ a:visited {
   }
   #carl-button,
   #my-location-button {
-    width: 45%;
+    width: 40%;
     color: white;
     font-size: 75%;
   }
